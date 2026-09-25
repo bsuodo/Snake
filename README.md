@@ -1,7 +1,7 @@
-# Over mijzelf
+# Over dit project
 Ik ben Amin, opdracht aandacht het maken voor deltion zwolle.
 
-Dit wordt mijn eerse project, dus dacht ik laat ik met iets makkelijk beginnen. Snake, een heel simpel spel, als dat te makkelijk wordt en als ik wat tijd over heb zou ik het mezelf wat moeilijker te maken door multiplayer toe te voegen met verschillende gamemodes.
+Dit wordt mijn eertse project, dus dacht ik laat ik met iets makkelijk beginnen. Snake, een heel simpel spel, als dat te makkelijk wordt en als ik wat tijd over heb zou ik het mezelf wat moeilijker te maken door multiplayer toe te voegen met verschillende gamemodes.
 
 Linux en Windows zijn de platformen die ik voor kan bouwen, je kan dan na de eind datum gemmakelijk het programma downloaden, anders moet je het zelf gaan bouwen.
 
