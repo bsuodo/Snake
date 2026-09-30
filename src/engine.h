@@ -15,7 +15,7 @@
 #define WIDTH 640 
 #define HEIGHT 800
 
-#define FPS_TARGET 1000 / 60
+#define FPS_TARGET 1000000000 / 60
 
 extern SDL_Window* Window;
 extern SDL_Renderer* Renderer;
@@ -28,9 +28,12 @@ extern enum scene {
 extern enum scene scene;
 extern bool sceneInit;
 
+extern bool quit;
+
 extern SDL_Texture* TileTEX;
 extern TTF_Font* font;
-extern MIX_Audio* geluid;
+extern MIX_Audio* goedG;
+extern MIX_Audio* foutG;
 extern MIX_Mixer* mixer;
 
 #endif//ENGINE_H

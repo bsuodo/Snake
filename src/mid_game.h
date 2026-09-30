@@ -5,4 +5,6 @@ void mid_game_init();
 void mid_game_update();
 void mid_game_event(SDL_Event* event);
 
+#include "slang.h"
+
 #endif

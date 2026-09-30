@@ -9,16 +9,6 @@ SDL_FRect appel = (SDL_FRect){2 + 1 * 80 , 2 + 0 * 80, 76, 76};
 
 void mid_game_init()
 {
-    SDL_Log("lengte: %d\n", slang.lengte);
-    for (int i = 0; i < 10; i++)
-    {
-        for (int j = 0; j < 8; j++)
-        {
-            printf("%d, ", MAP[i][j]);
-        }
-        printf("\n");
-    }
-
     slang_reset();
 
     memset(MAP, 0, sizeof(unsigned char) * (WIDTH / 80) * (HEIGHT / 80));
@@ -30,6 +20,9 @@ void mid_game_update()
 
     if ((int)(slang.staart[0].rect.x - 2) % 80 == 0 && (int)(slang.staart[0].rect.y - 2) % 80 == 0)
     {
+        slang.x+=slang.staart[0].current_dir[0];
+        slang.y+=slang.staart[0].current_dir[1];
+
         for (int count = slang.lengte - 1; count >= 1; count--)
         {
             slang.staart[count].current_dir[0] = slang.staart[count - 1].current_dir[0];
@@ -45,11 +38,12 @@ void mid_game_update()
             MAP[((int)slang.staart[count].rect.y - 2) / 80][((int)slang.staart[count].rect.x - 2) / 80] = 1;
         }
     }
-    if  (slang_raakt_rand() ||
-    MAP[((((int)slang.staart[0].rect.y - 2) - (((int)slang.staart[0].rect.y - 2) % 80)) / 80) + slang.staart[0].current_dir[1]]
-    [((((int)slang.staart[0].rect.x - 2) - (((int)slang.staart[0].rect.x - 2) % 80)) / 80) + slang.staart[0].current_dir[0]] == 1) {
+    else if  (slang_raakt_rand() ||
+    MAP[slang.y + slang.staart[0].current_dir[1]][slang.x + slang.staart[0].current_dir[0]]) {
         
+        MIX_PlayAudio(mixer, foutG);
         sceneInit = true;
+        scene = MAIN_MENU;
     }
 
     int hoofd_x = slang.staart[0].rect.x - 2; int hoofd_w = slang.staart[0].rect.w + 4;
@@ -59,6 +53,9 @@ void mid_game_update()
         hoofd_y <= appel.y + appel.h - 2 &&
         hoofd_y + hoofd_h >= appel.y + 2 )
     {
+        if (slang.lengte == 80)
+            quit = true;
+
         do {
             appel.y = (int)SDL_rand(10) * 80 + 2;
             appel.x = (int)SDL_rand(8) * 80 + 2;
@@ -66,7 +63,7 @@ void mid_game_update()
 
         slang_wordt_langer();
 
-        MIX_PlayAudio(mixer, geluid);
+        MIX_PlayAudio(mixer, goedG);
     }
 
     SDL_SetRenderDrawColor(Renderer, 44, 44, 44, 255);

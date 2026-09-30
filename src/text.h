@@ -10,5 +10,6 @@ typedef enum
 
 void TEXT_init();
 void TEXT_renderint(int nummer, int x, int y, TEXT_size grootte, bool center);
+void TEXT_rendertext(char* text, int x, int y, TEXT_size grootte, bool center);
 
 #endif//TEXT_H
