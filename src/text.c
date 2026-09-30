@@ -1,0 +1,47 @@
+#include "text.h"
+
+SDL_Texture* alfa[26] = {0};
+SDL_Texture* num[10] = {0};
+
+void TEXT_init()
+{
+    // alfa
+    // for (int count = 0; count < 26, count++;)
+    // {
+        // SDL_Surface* genfont = TTF_RenderText_Blended(font, );
+    // }
+
+    // num
+    for (int count = 0; count < 10; count++)
+    {
+        char letterofnum[2] = {48 + count, '\0'};
+        SDL_Surface* genfont = TTF_RenderText_Blended(font, letterofnum, 1, (SDL_Color){255, 255, 255, 255});
+        num[count] = SDL_CreateTextureFromSurface(Renderer, genfont);
+        SDL_DestroySurface(genfont);
+    }
+}
+
+void TEXT_renderint(int nummer, int x, int y, TEXT_size grootte, bool center)
+{
+    char text[8];
+    sprintf(text, "%d", nummer);
+
+    int width = 0;
+    for (int count = 0; count < strlen(text); count++)
+    {
+        width += num[text[count] - 48]->w;
+    }
+    
+    SDL_FRect rect = {
+        .x = x - width / 2,
+        .y = y - 32 / 2,
+        .h = num[0]->h
+    };
+
+    for (int count = 0; count < strlen(text); count++)
+    {
+        rect.w = num[text[count] - 48]->w;
+        SDL_RenderTexture(Renderer, num[text[count] - 48], NULL, &rect);
+        rect.x += num[text[count] - 48]->w;
+    }
+}

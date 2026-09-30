@@ -1,5 +1,6 @@
 #include "engine.h"
 
+// scenes
 #include "mid_game.h"
 
 #include <SDL3/SDL_main.h>
@@ -9,16 +10,39 @@ unsigned long long current_time = 0;
 
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
+    TTF_Init();
+    MIX_Init();
+
     Window = SDL_CreateWindow("Snake - Amin Boutakmanti (C) 2026", WIDTH, HEIGHT, 0);
     Renderer = SDL_CreateRenderer(Window, NULL);
 
-    char assets_path[1024];
+    mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, NULL);
+
     const char* base_path = SDL_GetBasePath();
     int size_base_path = strlen(base_path);
+    
+    {
+        char assets_path[1024];
+        strcpy(assets_path, base_path);
+        strcpy(assets_path + size_base_path, "../assets/textures/tile.png");
+        TileTEX = IMG_LoadTexture(Renderer, assets_path);
+    }
+    
+    {
+        char assets_path[1024];
+        strcpy(assets_path, base_path);
+        strcpy(assets_path + size_base_path, "../assets/fonts/ARIALBD.TTF");
+        font = TTF_OpenFont(assets_path, 64);
+    }
 
-    strcpy(assets_path, base_path);
-    strcpy(assets_path + size_base_path, "../assets/tile.png");
-    TileTEX = IMG_LoadTexture(Renderer, assets_path);
+    {
+        char assets_path[1024];
+        strcpy(assets_path, base_path);
+        strcpy(assets_path + size_base_path, "../assets/sounds/pickup.mp3");
+        geluid = MIX_LoadAudio(mixer, assets_path, false);
+    }
+
+    TEXT_init();
 
     if (scene == MID_GAME)
         mid_game_init();
@@ -30,6 +54,14 @@ SDL_AppResult SDL_AppIterate(void *appstate)
 {
     last_time = SDL_GetTicks();
     
+    if (sceneInit)
+    {
+        if (scene == MID_GAME)
+            mid_game_init();
+        
+        sceneInit = false;
+    }
+
     if (scene == MID_GAME)
         mid_game_update();
 

@@ -3,10 +3,14 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
+#include <SDL3_ttf/SDL_ttf.h>
+#include <SDL3_mixer/SDL_mixer.h>
 #define SDL_MAIN_USE_CALLBACKS
 
 #include <string.h>
 #include <stdio.h>
+
+#include "text.h"
 
 #define WIDTH 640 
 #define HEIGHT 800
@@ -22,7 +26,11 @@ extern enum scene {
 };
 
 extern enum scene scene;
+extern bool sceneInit;
 
 extern SDL_Texture* TileTEX;
+extern TTF_Font* font;
+extern MIX_Audio* geluid;
+extern MIX_Mixer* mixer;
 
 #endif//ENGINE_H
