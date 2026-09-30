@@ -23,9 +23,9 @@ void main_menu_update()
         }
     }
 
-    TEXT_rendertext("kapol", WIDTH / 2, 192, 32, true);
+    TEXT_rendertext("kapol", WIDTH / 2, 192 + SDL_cos(SDL_GetTicks() / (float)500) * 20, 32, true);
 
-    TEXT_rendertext("Press to start", WIDTH / 2, 512 + 1, 32, true);
+    TEXT_rendertext("Press to start", WIDTH / 2, 512 + SDL_cos(SDL_GetTicks() / (float)500) * 20, 32, true);
 
     SDL_RenderPresent(Renderer);
 }
