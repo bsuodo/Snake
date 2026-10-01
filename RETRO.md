@@ -12,9 +12,11 @@ Ik probeerde te code schoon te houden, dat was erg lastig. Want 1 verandering ka
 
 Uiteindelijk heb ik wel kunnen bouwen voor Windows en Linux, hoewel ik eerst dacht dat de Windows build maar niet deed, blijkt het te zijn dat ik was vergeten een argument te geven aan deze spel.
 
-Mijn volgende project wordt precies op dezelfde taal 'C' of javascript. Dat zijn mijn meest gebruikte programeer talen. Maar wat ik ermee ga maken, dat is nog onduidelijk.
+Mijn volgende project wordt precies op dezelfde taal 'C' of javascript. Dat zijn mijn meest gebruikte programmeer talen. Maar wat ik ermee ga maken, dat is nog onduidelijk.
 
-AI, is gebruikt om fouten op te sporen of als ik de syntax vergeet, dan kan ik ai snel vragen inplaats van naar de documententies toe te gaan voor dat simpel probleem. Ik heb niet met AI dingen geplakt of generate.
+Niet zo snel opgeven, en al vanaf begin je code te organizeren zodat ik straks niet alles opnieuw moet coderen omdat het te rommelig was.
+
+AI, is gebruikt om fouten op te sporen of als ik de syntax vergeet, dan kan ik ai snel vragen inplaats van naar de documententies toe te gaan voor dat simpel probleem. Ik heb niet met AI dingen geplakt of generate.z
 
 Hier onder staan mijn gegevens:
 
